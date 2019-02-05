@@ -27,8 +27,9 @@ set.seed(rand_seed)
 model <- xgboost(
   data = test,
   label = label,
-  # the data
   nround = 2,
-  # max number of boosting iterations
-  objective = "binary:logistic"
+  objective = "multi:softmax",
+  num_class = 2
 )
+
+pred <- predict(model, test)
